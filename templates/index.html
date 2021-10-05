@@ -1,0 +1,128 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+<h1 class="heading"><span style="color:red">Covid-19</span> World Wide Data</h1>
+<div class="row">
+    <div class="col-lg-6 m-auto">
+        <form action="" method="post" class="d-flex">
+            {% csrf_token %}
+           <select name="selectcountry" class="form-control" required>
+               <option>--Select Country--</option>
+               {% for country in mylist %}
+               <option>{{ country }} </option>
+               {% endfor %}
+           </select>
+           <button type="submit" class="btn btn-danger">Search</button>
+        </form>
+    </div>
+</div>
+<h1 style="text-align:center;margin-top:20px;color:white;">{{ selectedCountry }}</h1>
+
+<p class="text-center text-white">{{ day }} | {{ time }}</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4  col-md-4">
+            <div class="card" style="padding:0px">
+                {% if new is null %}
+                <div class="card-body">
+                    <h2 class="card-title">New Cases</h2>
+                    <h2 class="card-text">{{ 0 }}</h2>
+                </div>
+                {% else %}
+                <div class="card-body">
+                    <h2 class="card-title">New Cases</h2>
+                    <h2 class="card-text">{{ new }}</h2>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4">
+            <div class="card" style="padding:0px">
+                {% if recoverd is null %}
+                <div class="card-body">
+                    <h2 class="card-title" style="background:green;">Recover Cases</h2>
+                    <h2 class="card-text">{{ 0 }}</h2>
+                </div>
+                {% else %}
+                <div class="card-body" style="padding: 0px;">
+                    <h2 class="card-title" style="background:green;">Recover Cases</h2>
+                    <h2 class="card-text">{{ recoverd }}</h2>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4">
+            <div class="card" style="padding:0px">
+                {% if todaydeath is null %}
+                <div class="card-body">
+                    <h2 class="card-title" style="background:red;">Deaths</h2>
+                    <h2 class="card-text">{{ 0 }}</h2>
+                </div>
+                {% else %}
+                <div class="card-body">
+                    <h2 class="card-title" style="background:red;">Deaths</h2>
+                    <h2 class="card-text">{{ todaydeath }}</h2>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4">
+            <div class="card" style="padding:0px">
+                {% if active is null %}
+                <div class="card-body">
+                    <h2 class="card-title" style="background:yellow;">Active Cases</h2>
+                    <h2 class="card-text">{{ 0 }}</h2>
+                </div>
+                {% else %}
+                <div class="card-body">
+                    <h2 class="card-title" style="background:yellow;">Active Cases</h2>
+                    <h2 class="card-text">{{ active }}</h2>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4">
+            <div class="card" style="padding:0px">
+                {% if total is null %}
+                <div class="card-body">
+                    <h2 class="card-title">Total Cases</h2>
+                    <h2 class="card-text">{{ 0 }}</h2>
+                </div>
+                {% else %}
+                <div class="card-body">
+                    <h2 class="card-title">Total Cases</h2>
+                    <h2 class="card-text">{{ total }}</h2>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4">
+            <div class="card" style="padding:0px">
+                {% if totaldeath is null %}
+                <div class="card-body">
+                    <h2 class="card-title" style="background:red;">Total Deaths</h2>
+                    <h2 class="card-text">{{ 0 }}</h2>
+                </div>
+                {% else %}
+                <div class="card-body">
+                    <h2 class="card-title" style="background:red;">Total Deaths</h2>
+                    <h2 class="card-text">{{ totaldeath }}</h2>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4">
+            <div class="card" style="padding:0px">
+                <div class="card-body">
+                    <h2 class="card-title" style="background:green;">Total Tests</h2>
+                    <h2 class="card-text">{{ totaltest }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

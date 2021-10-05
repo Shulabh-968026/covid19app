@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<h1 class="heading"><span style="color:red">Covid-19</span> World Wide Data</h1>
+<div class="row">
+    <div class="col-lg-6 m-auto">
+        <form action="" method="post" class="d-flex">
+            {% csrf_token %}
+           <select name="selectcountry" class="form-control" required>
+               <option>--Select Country--</option>
+               {% for country in mylist %}
+               <option>{{ country }} </option>
+               {% endfor %}
+           </select>
+           <button type="submit" class="btn btn-danger">Search</button>
+        </form>
+    </div>
+</div>
+<h1 class="text-center text-info mt-2">{{msg}}</h1>
+</div>
+{% endblock %}
